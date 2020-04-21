@@ -1,5 +1,10 @@
 # images
 
+### Live example can be seen at
+```
+https://imgur-image-upload.herokuapp.com/
+```
+
 ## Project setup
 ```
 npm install
