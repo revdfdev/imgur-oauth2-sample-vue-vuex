@@ -23,5 +23,20 @@ export default {
 		});
 
 		return instance.get(`${ROOT_URL}/3/account/me/images`)
+	},
+	upload(images, token) {
+		const instance = axios.create({
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		});
+
+		const promises = Array.from(images).map(image => {
+			const formData = new FormData();
+			formData.append('image', image);
+			return instance.post(`${ROOT_URL}/3/image`, formData)
+		});
+
+		return Promise.all(promises);
 	}
 }

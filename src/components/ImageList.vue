@@ -1,7 +1,9 @@
 <template>
-    <div>
+    <div v-if="isLoggedin" class="image-container">
         <img v-for="image in allImages" :src="image.link" :key="image.id"  />
     </div>
+
+    <h2 v-else> Please log in to continue </h2>
 </template>
 
 <script>
@@ -14,7 +16,8 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'allImages'
+            'allImages',
+            'isLoggedin'
         ])
     },
     methods: {
@@ -26,5 +29,14 @@ export default {
 </script>
 
 <style scoped>
+.image-container {
+    column-count: 3;
+    column-gap: 0;
+}
 
+img {
+    max-width: 100%;
+    padding: 5px;
+
+}
 </style>
