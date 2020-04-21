@@ -13,7 +13,6 @@ const getters = {
 const actions = {
     fetchImages: async ({ rootState, commit }) => {
         try {
-            console.log(JSON.stringify(rootState, null, 3));
             const response = await api.fetchImages(rootState.auth.token);
             const { data } = response.data;
             if (data.length === 0) throw new Error('No images found');
@@ -24,7 +23,6 @@ const actions = {
     },
     uploadImage: async ({ commit, rootState }, files) => {
         const  { token } = rootState.auth;
-        console.log(token);
         try {
             await api.upload(files, token);
             router.push('/');
